@@ -1,13 +1,46 @@
-import { useLocation } from "react-router-dom";
-import { Form, Input, Button } from "antd";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Form, Input, Button, message } from "antd";
+import { useStore } from "@/store/useStore";
+import { updateUser, createTransaction } from "@/services/api";
 
 const Transaction = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const pkg = location.state;
 
-  const onFinish = (values) => {
-    console.log("Beli paket:", pkg);
-    console.log("Nomor:", values.phone);
+  const user = useStore((state) => state.user);
+  const setUser = useStore((state) => state.setUser);
+
+  const onFinish = async (values) => {
+    try {
+      if (user.balance < pkg.price) {
+        message.error("Saldo tidak cukup");
+        return;
+      }
+
+      const newBalance = user.balance - pkg.price;
+
+      const updatedUser = await updateUser(user.id, {
+        balance: newBalance,
+      });
+
+      await createTransaction({
+        userId: user.id,
+        packageId: pkg.id,
+        phone: values.phone,
+        price: pkg.price,
+        createdAt: new Date().toISOString(),
+      });
+
+      setUser(updatedUser);
+
+      message.success("Transaksi berhasil✅");
+
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+      message.error("Terjadi kesalahan transaksi❌");
+    }
   };
 
   return (
@@ -16,13 +49,16 @@ const Transaction = () => {
 
       <p>{pkg?.name}</p>
       <p>Rp {pkg?.price}</p>
+      <p>Saldo: Rp {user?.balance}</p>
 
       <Form onFinish={onFinish}>
         <Form.Item name="phone" rules={[{ required: true }]}>
           <Input placeholder="Nomor HP" />
         </Form.Item>
 
-        <Button htmlType="submit">Beli</Button>
+        <Button type="primary" htmlType="submit">
+          Beli
+        </Button>
       </Form>
     </div>
   );

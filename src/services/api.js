@@ -15,3 +15,15 @@ export const getPackages = async () => {
   if (!res) return [];
   return res.data;
 };
+
+export const updateUser = async (id, data) => {
+  const res = await API.patch(`/users/${id}`, data);
+  if (!res) return [];
+  return res.data;
+};
+
+export const createTransaction = async (data) => {
+  const res = await API.post("/transactions", data);
+  if (!res) return [];
+  return res.data;
+};

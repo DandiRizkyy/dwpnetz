@@ -4,6 +4,7 @@ import AuthRoute from "@/components/common/AuthRoute";
 import Dashboard from "@/pages/Dashboard";
 import Packages from "@/pages/Packages";
 import Transaction from "@/pages/Transaction";
+import History from "@/pages/History";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/packages" element={<Packages />} />
           <Route path="/transaction" element={<Transaction />} />
+          <Route path="/history" element={<History />} />
         </Route>
       </Routes>
     </BrowserRouter>

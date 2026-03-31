@@ -27,6 +27,8 @@ const Transaction = () => {
       await createTransaction({
         userId: user.id,
         packageId: pkg.id,
+        packageName: pkg.name,
+        provider: pkg.provider,
         phone: values.phone,
         price: pkg.price,
         createdAt: new Date().toISOString(),

@@ -27,3 +27,9 @@ export const createTransaction = async (data) => {
   if (!res) return [];
   return res.data;
 };
+
+export const getTransactions = async () => {
+  const res = await API.get("/transactions");
+  if (!res) return [];
+  return res.data;
+};

@@ -22,6 +22,7 @@ const Packages = () => {
 
       {packages.map((pkg) => (
         <div key={pkg.id}>
+          <p>{pkg.provider}</p>
           <p>{pkg.name}</p>
           <p>Rp {pkg.price}</p>
 

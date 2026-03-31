@@ -1,7 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "@/pages/Login";
-import Dashboard from "@/pages/Dashboard";
 import AuthRoute from "@/components/common/AuthRoute";
+import Dashboard from "@/pages/Dashboard";
+import Packages from "@/pages/Packages";
+import Transaction from "@/pages/Transaction";
 
 function App() {
   return (
@@ -11,6 +13,8 @@ function App() {
 
         <Route element={<AuthRoute />}>
           <Route path="/" element={<Dashboard />} />
+          <Route path="/packages" element={<Packages />} />
+          <Route path="/transaction" element={<Transaction />} />
         </Route>
       </Routes>
     </BrowserRouter>

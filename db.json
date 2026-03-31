@@ -16,6 +16,14 @@
       "price": 50000,
       "quota": 10,
       "duration": 30
+    },
+    {
+      "id": 2,
+      "provider": "XL",
+      "name": "5GB",
+      "price": 30000,
+      "quota": 5,
+      "duration": 30
     }
   ],
   "transactions": []

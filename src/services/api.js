@@ -9,3 +9,9 @@ export const loginUser = async (email) => {
   if (!res) return [];
   return res.data[0];
 };
+
+export const getPackages = async () => {
+  const res = await API.get("/packages");
+  if (!res) return [];
+  return res.data;
+};

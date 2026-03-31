@@ -25,7 +25,18 @@ const Packages = () => {
           <p>{pkg.name}</p>
           <p>Rp {pkg.price}</p>
 
-          <Button onClick={() => navigate("/transaction", { state: pkg })}>
+          <Button
+            onClick={() =>
+              navigate("/transaction", {
+                state: {
+                  packageId: pkg.id,
+                  packageName: pkg.name,
+                  provider: pkg.provider,
+                  price: pkg.price,
+                },
+              })
+            }
+          >
             Beli
           </Button>
         </div>

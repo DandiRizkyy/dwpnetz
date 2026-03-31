@@ -5,8 +5,9 @@ import { updateUser, createTransaction } from "@/services/api";
 
 const Transaction = () => {
   const location = useLocation();
+  const data = location.state;
   const navigate = useNavigate();
-  const pkg = location.state;
+  const pkg = data;
 
   const user = useStore((state) => state.user);
   const setUser = useStore((state) => state.setUser);
@@ -49,11 +50,21 @@ const Transaction = () => {
     <div>
       <h2>Transaksi</h2>
 
-      <p>{pkg?.name}</p>
-      <p>Rp {pkg?.price}</p>
-      <p>Saldo: Rp {user?.balance}</p>
+      <div style={{ marginBottom: 16 }}>
+        <p>
+          <strong>{pkg?.packageName}</strong>
+        </p>
+        <p>{pkg?.provider}</p>
+        <p>Rp {pkg?.price}</p>
+        <p>Saldo: Rp {user?.balance}</p>
+      </div>
 
-      <Form onFinish={onFinish}>
+      <Form
+        onFinish={onFinish}
+        initialValues={{
+          phone: data?.phone,
+        }}
+      >
         <Form.Item name="phone" rules={[{ required: true }]}>
           <Input placeholder="Nomor HP" />
         </Form.Item>

@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "user@gmail.com",
+      "password": "$2b$10$hXniPueeXjtv0bFAqL0Ucu.fZeMaYtDFDDzCGCLWGQrlohap3vYKm",
+      "name": "Test User",
+      "balance": 100000
+    }
+  ],
+  "packages": [
+    {
+      "id": 1,
+      "provider": "Telkomsel",
+      "name": "10GB",
+      "price": 50000,
+      "quota": 10,
+      "duration": 30
+    }
+  ],
+  "transactions": []
+}

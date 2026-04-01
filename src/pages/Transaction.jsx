@@ -198,6 +198,10 @@ const Transaction = () => {
               size="large"
               placeholder="Contoh: 08512345678"
               maxLength={16}
+              onChange={(e) => {
+                const val = e.target.value.replace(/[^0-9+]/g, "");
+                form.setFieldValue("phone", val);
+              }}
             />
           </Form.Item>
 

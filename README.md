@@ -59,7 +59,7 @@ npx json-server --watch db.json --port 3000
 npm run dev
 ```
 
-**Demo login:** `user@gmail.com` / `password123`
+**Demo login:** `email: user@gmail.com` || `password: test123`
 
 ---
 

@@ -47,7 +47,7 @@ const History = () => {
     };
 
     fetchData();
-  }, []);
+  }, [user.id]);
 
   return (
     <div>

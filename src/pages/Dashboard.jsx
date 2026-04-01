@@ -104,7 +104,6 @@ const Dashboard = () => {
               valueStyle={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 700,
-                fontSize: 16,
               }}
             />
           </Card>

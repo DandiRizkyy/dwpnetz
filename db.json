@@ -1,16 +1,24 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "email": "user@gmail.com",
       "password": "$2b$10$hXniPueeXjtv0bFAqL0Ucu.fZeMaYtDFDDzCGCLWGQrlohap3vYKm",
       "name": "Test User",
-      "balance": 100000
+      "balance": 300000
     }
   ],
   "packages": [
     {
-      "id": 1,
+      "id": "1",
+      "provider": "Telkomsel",
+      "name": "5GB",
+      "price": 25000,
+      "quota": 5,
+      "duration": 7
+    },
+    {
+      "id": "2",
       "provider": "Telkomsel",
       "name": "10GB",
       "price": 50000,
@@ -18,13 +26,105 @@
       "duration": 30
     },
     {
-      "id": 2,
+      "id": "3",
+      "provider": "Telkomsel",
+      "name": "20GB",
+      "price": 90000,
+      "quota": 20,
+      "duration": 30
+    },
+    {
+      "id": "4",
+      "provider": "Telkomsel",
+      "name": "50GB",
+      "price": 150000,
+      "quota": 50,
+      "duration": 30
+    },
+    {
+      "id": "5",
       "provider": "XL",
       "name": "5GB",
-      "price": 30000,
+      "price": 20000,
       "quota": 5,
+      "duration": 7
+    },
+    {
+      "id": "6",
+      "provider": "XL",
+      "name": "10GB",
+      "price": 45000,
+      "quota": 10,
+      "duration": 30
+    },
+    {
+      "id": "7",
+      "provider": "XL",
+      "name": "30GB",
+      "price": 100000,
+      "quota": 30,
+      "duration": 30
+    },
+    {
+      "id": "8",
+      "provider": "Indosat",
+      "name": "8GB",
+      "price": 35000,
+      "quota": 8,
+      "duration": 30
+    },
+    {
+      "id": "9",
+      "provider": "Indosat",
+      "name": "20GB",
+      "price": 75000,
+      "quota": 20,
+      "duration": 30
+    },
+    {
+      "id": "10",
+      "provider": "Tri",
+      "name": "6GB",
+      "price": 20000,
+      "quota": 6,
+      "duration": 7
+    },
+    {
+      "id": "11",
+      "provider": "Tri",
+      "name": "15GB",
+      "price": 50000,
+      "quota": 15,
       "duration": 30
     }
   ],
-  "transactions": []
+  "transactions": [
+    {
+      "id": "tACmcVDxCR0",
+      "userId": "1",
+      "packageId": "2",
+      "packageName": "10GB",
+      "provider": "Telkomsel",
+      "phone": "085122334455",
+      "price": 50000,
+      "quota": 10,
+      "duration": 30,
+      "status": "success",
+      "createdAt": "2026-03-31T13:22:41.118Z"
+    },
+    {
+      "id": "FtvTbarOmQQ",
+      "userId": "1",
+      "packageId": "6",
+      "packageName": "10GB",
+      "provider": "XL",
+      "phone": "087712345678",
+      "price": 45000,
+      "quota": 10,
+      "duration": 30,
+      "status": "success",
+      "createdAt": "2026-03-30T09:10:00.000Z"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

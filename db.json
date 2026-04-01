@@ -6,6 +6,13 @@
       "password": "$2b$10$hXniPueeXjtv0bFAqL0Ucu.fZeMaYtDFDDzCGCLWGQrlohap3vYKm",
       "name": "Test User",
       "balance": 300000
+    },
+    {
+      "id": "2",
+      "email": "admin@gmail.com",
+      "password": "$2b$10$hXniPueeXjtv0bFAqL0Ucu.fZeMaYtDFDDzCGCLWGQrlohap3vYKm",
+      "name": "Test User",
+      "balance": 500000
     }
   ],
   "packages": [

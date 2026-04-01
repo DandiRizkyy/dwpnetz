@@ -42,7 +42,6 @@ const MainLayout = () => {
 
       <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
         <div className="sidebar-logo">
-          <div className="logo-icon">D</div>
           <div>
             <div className="logo-text">DWP Netz</div>
             <span className="logo-sub">Paket Data Internet</span>

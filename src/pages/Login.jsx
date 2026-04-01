@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Form, Input, Button, Card, Typography, message } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useStore } from "@/store/useStore";
@@ -7,15 +8,18 @@ import bcrypt from "bcryptjs";
 const { Title } = Typography;
 
 const Login = () => {
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const setUser = useStore((state) => state.setUser);
 
   const onFinish = async (values) => {
     try {
+      setLoading(true);
       const user = await loginUser(values.email);
 
       if (!user) {
         message.error("User tidak ditemukan");
+        setLoading(false);
         return;
       }
 
@@ -23,15 +27,16 @@ const Login = () => {
 
       if (!isMatch) {
         message.error("Password salah");
+        setLoading(false);
         return;
       }
-
       setUser(user);
-
+      setLoading(false);
       message.success("Login berhasil 🚀");
       navigate("/");
     } catch (err) {
       console.log(err);
+      setLoading(false);
       message.error("Terjadi kesalahan");
     }
   };
@@ -60,7 +65,7 @@ const Login = () => {
             <Input.Password placeholder="Masukkan password" />
           </Form.Item>
 
-          <Button type="primary" htmlType="submit" block>
+          <Button type="primary" htmlType="submit" block loading={loading}>
             Login
           </Button>
         </Form>

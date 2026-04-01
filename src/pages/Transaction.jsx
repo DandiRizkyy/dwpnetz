@@ -48,13 +48,16 @@ const Transaction = () => {
         balance: newBalance,
       });
 
-      await createTransaction({
+      const trx = await createTransaction({
         userId: user.id,
-        packageId: pkg.id,
-        packageName: pkg.name,
+        packageId: pkg.packageId,
+        packageName: pkg.packageName,
         provider: pkg.provider,
+        quota: pkg.quota,
+        duration: pkg.duration,
         phone: values.phone,
         price: pkg.price,
+        status: "success",
         createdAt: new Date().toISOString(),
       });
 
@@ -62,7 +65,7 @@ const Transaction = () => {
 
       message.success("Transaksi berhasil✅");
 
-      navigate("/success");
+      navigate("/success", { state: { trx, pkg, phone: values.phone } });
     } catch (err) {
       console.log(err);
       message.error("Terjadi kesalahan transaksi❌");
@@ -262,19 +265,23 @@ const Transaction = () => {
           </div>
 
           <Button
+            disabled={!hasBalance}
             type="primary"
             htmlType="submit"
             block
             size="large"
-            disabled={!hasBalance}
-            style={{
-              background: "var(--brand-dark)",
-              borderColor: "var(--brand-dark)",
-              height: 48,
-              fontWeight: 500,
-            }}
+            style={
+              !hasBalance
+                ? { height: 48, fontWeight: 500 }
+                : {
+                    background: "var(--brand-dark)",
+                    borderColor: "var(--brand-dark)",
+                    height: 48,
+                    fontWeight: 500,
+                  }
+            }
           >
-            {"Konfirmasi & Bayar"}
+            {hasBalance ? "Konfirmasi & Bayar" : "Saldo Tidak Cukup"}
           </Button>
         </Form>
       </Card>

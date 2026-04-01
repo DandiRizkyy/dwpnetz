@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MainLayout from "@/components/common/MainLayout";
 import Login from "@/pages/Login";
 import AuthRoute from "@/components/common/AuthRoute";
 import Dashboard from "@/pages/Dashboard";
@@ -14,11 +15,13 @@ function App() {
         <Route path="/login" element={<Login />} />
 
         <Route element={<AuthRoute />}>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/packages" element={<Packages />} />
-          <Route path="/transaction" element={<Transaction />} />
-          <Route path="/history" element={<History />} />
-          <Route path="/success" element={<Success />} />
+          <Route element={<MainLayout />}>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/packages" element={<Packages />} />
+            <Route path="/transaction" element={<Transaction />} />
+            <Route path="/history" element={<History />} />
+            <Route path="/success" element={<Success />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

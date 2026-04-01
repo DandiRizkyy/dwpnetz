@@ -7,6 +7,7 @@ import Packages from "@/pages/Packages";
 import Transaction from "@/pages/Transaction";
 import History from "@/pages/History";
 import Success from "@/pages/Success";
+import Topup from "@/pages/Topup";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/transaction" element={<Transaction />} />
             <Route path="/history" element={<History />} />
             <Route path="/success" element={<Success />} />
+            <Route path="/topup" element={<Topup />} />
           </Route>
         </Route>
       </Routes>

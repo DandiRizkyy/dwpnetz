@@ -8,6 +8,7 @@ const Dashboard = () => {
       <br />
       <button onClick={() => navigate("/packages")}>beli paket</button>
       <button onClick={() => navigate("/history")}>ke menu history</button>
+      <button onClick={() => navigate("/topup")}>aku mau topup</button>
       <button
         onClick={() => {
           localStorage.clear();

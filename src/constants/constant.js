@@ -47,4 +47,28 @@ const PREFIX_PROVIDER = {
 
 const TOPUP_VALUE = [20000, 50000, 100000, 150000, 200000, 500000];
 
-export { PROVIDER_COLORS, PREFIX_PROVIDER, TOPUP_VALUE };
+const NAV_ITEMS = [
+  { path: "/", icon: "⊞", label: "Dashboard" },
+  { path: "/packages", icon: "📦", label: "Pilih Paket" },
+  { path: "/history", icon: "📋", label: "Riwayat" },
+  { path: "/topup", icon: "💳", label: "Top Up" },
+  { path: "/profile", icon: "👤", label: "Profil" },
+];
+
+const PAGE_TITLES = {
+  "/": "Dashboard",
+  "/packages": "Pilih Paket",
+  "/transaction": "Detail Pembelian",
+  "/history": "Riwayat Transaksi",
+  "/success": "Transaksi Berhasil",
+  "/profile": "Profil Saya",
+  "/topup": "Top Up Saldo",
+};
+
+export {
+  PROVIDER_COLORS,
+  PREFIX_PROVIDER,
+  TOPUP_VALUE,
+  NAV_ITEMS,
+  PAGE_TITLES,
+};

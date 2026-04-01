@@ -5,6 +5,7 @@ import Dashboard from "@/pages/Dashboard";
 import Packages from "@/pages/Packages";
 import Transaction from "@/pages/Transaction";
 import History from "@/pages/History";
+import Success from "@/pages/Success";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/packages" element={<Packages />} />
           <Route path="/transaction" element={<Transaction />} />
           <Route path="/history" element={<History />} />
+          <Route path="/success" element={<Success />} />
         </Route>
       </Routes>
     </BrowserRouter>

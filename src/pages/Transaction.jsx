@@ -49,7 +49,7 @@ const Transaction = () => {
 
       message.success("Transaksi berhasil✅");
 
-      navigate("/");
+      navigate("/success");
     } catch (err) {
       console.log(err);
       message.error("Terjadi kesalahan transaksi❌");

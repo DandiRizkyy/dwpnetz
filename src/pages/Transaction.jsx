@@ -16,7 +16,6 @@ const Transaction = () => {
   const user = useStore((state) => state.user);
   const setUser = useStore((state) => state.setUser);
 
-  console.log("isi data", data);
   const onFinish = async (values) => {
     try {
       if (user.balance < pkg.price) {
@@ -56,7 +55,6 @@ const Transaction = () => {
     }
   };
 
-  console.log("werr", user);
   return (
     <div>
       <h2>Transaksi</h2>

@@ -7,6 +7,15 @@ const Dashboard = () => {
       ini dashboard
       <br />
       <button onClick={() => navigate("/packages")}>beli paket</button>
+      <button onClick={() => navigate("/history")}>ke menu history</button>
+      <button
+        onClick={() => {
+          localStorage.clear();
+          navigate("/login");
+        }}
+      >
+        logout
+      </button>
     </>
   );
 };

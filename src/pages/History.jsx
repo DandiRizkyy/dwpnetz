@@ -38,7 +38,9 @@ const History = () => {
     const fetchData = async () => {
       const res = await getTransactions();
 
-      const userTransactions = res.filter((trx) => trx.userId === user.id);
+      const userTransactions = res
+        .filter((trx) => trx.userId === user.id)
+        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
       setLoading(false);
       setTransactions(userTransactions);

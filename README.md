@@ -7,8 +7,10 @@ Prototype website e-commerce untuk pembelian paket data internet, dibuat sebagai
 Flow utamanya:
 
 ```
-Login → Dashboard → Pilih Paket → Input Nomor → Checkout → Success → History → Repeat Order
+Landing Page (publik) → [Beli Paket] → Login → Pilih Paket → Input Nomor → Checkout → Success → History → Repeat Order
 ```
+
+User yang belum login bisa melihat landing page dan katalog paket. Untuk membeli, diarahkan ke halaman login terlebih dahulu.
 
 ---
 
@@ -17,7 +19,8 @@ Login → Dashboard → Pilih Paket → Input Nomor → Checkout → Success →
 **Frontend**
 
 - React + Vite
-- Ant Design — komponen utama (Form, Button, Card, Modal, Tag, Statistic, dll)
+- Ant Design — komponen utama (Form, Button, Card, Modal, Tag, Statistic, Drawer, dll)
+- `@ant-design/icons` — ikon konsisten di seluruh halaman
 - Zustand — state management (user session + saldo)
 - React Router DOM
 - Axios
@@ -71,21 +74,21 @@ npm run dev
 
 ## Fitur
 
+### Landing Page (Publik)
+
+Halaman utama yang bisa diakses tanpa login. Menampilkan hero banner, 3 keunggulan layanan, dan preview 6 paket terpopuler. Guest bisa lihat-lihat paket, tapi diarahkan login dulu saat mau beli.
+
 ### Authentication
 
-Login pakai email + password yang divalidasi lewat json-server. Password di-hash pakai bcrypt. Sengaja tidak ada register — user langsung bisa akses semua fitur setelah masuk.
-
-### Dashboard
-
-Halaman pertama setelah login. Menampilkan saldo aktif, statistik transaksi, shortcut beli paket & top up, dan 4 transaksi terakhir.
+Login pakai email + password yang divalidasi lewat json-server. Password di-hash pakai bcrypt. Setelah login, user diarahkan ke landing page.
 
 ### Katalog Paket
 
-List semua paket dari berbagai provider. Ada filter per provider (Telkomsel, XL, Indosat, Tri) biar user tidak perlu scroll semua kalau sudah tahu mau beli yang mana.
+List semua paket dari berbagai provider. Ada filter per provider (Telkomsel, XL, Indosat, Tri, Smartfren). Bisa diakses publik — guest langsung diarahkan login saat klik beli.
 
 ### Transaksi
 
-User input nomor HP, provider langsung terdeteksi otomatis dari prefix nomor. Kalau nomornya tidak sesuai provider paket yang dipilih, langsung ada warning sebelum lanjut. Validasi saldo juga dilakukan di sini, kalau kurang, ada tombol langsung ke Top Up.
+User input nomor HP, provider langsung terdeteksi otomatis dari prefix nomor. Kalau nomornya tidak sesuai provider paket yang dipilih, langsung ada warning sebelum lanjut. Validasi saldo juga dilakukan di sini — kalau kurang, ada tombol langsung ke Top Up. Input nomor HP hanya menerima angka dan karakter `+`.
 
 ### Halaman Sukses
 
@@ -101,17 +104,15 @@ Pilih nominal dari preset (20rb–500rb) atau input sendiri. Ada preview saldo s
 
 ### Profil
 
-Info akun, statistik pengeluaran, dan tombol logout dengan konfirmasi modal.
+Info akun, statistik total transaksi & pengeluaran, dan tombol logout dengan konfirmasi modal.
 
 ---
 
 ## Navigasi
 
-**Desktop** — sidebar tetap di kiri, topbar menampilkan saldo aktif.
+**Desktop** — navbar atas dengan logo, menu links, balance pill (klik untuk top up), avatar (klik untuk profil), dan tombol logout.
 
-**Mobile** — sidebar bisa dibuka lewat hamburger button, navigasi utama via bottom bar.
-
-Tombol logout tersedia di sidebar (desktop & mobile) dan di halaman profil.
+**Mobile** — navbar tetap di atas, menu bisa dibuka lewat hamburger button yang membuka drawer dari kanan.
 
 ---
 
@@ -120,20 +121,18 @@ Tombol logout tersedia di sidebar (desktop & mobile) dan di halaman profil.
 ```
 src/
 ├── components/
-│   ├── common/
-│       ├── AppLayout.jsx     # sidebar, topbar, bottom nav
-│       └── AuthRoute.jsx     # Route guard
-│
-│
+│   └── common/
+│       ├── MainLayout.jsx    # navbar atas, mobile drawer
+│       └── AuthRoute.jsx     # route guard (protected routes)
 │
 ├── pages/
+│   ├── Landing.jsx
 │   ├── Login.jsx
-│   ├── Dashboard.jsx
 │   ├── Packages.jsx
 │   ├── Transaction.jsx
 │   ├── Success.jsx
 │   ├── History.jsx
-│   ├── TopUp.jsx
+│   ├── Topup.jsx
 │   └── Profile.jsx
 │
 ├── services/
@@ -142,9 +141,27 @@ src/
 ├── store/
 │   └── useStore.js           # Zustand: user state + saldo
 │
+├── constants/
+│   └── constant.js
+│
 └── utils/
-    └── detectProvider.js     # Auto-detect dari prefix nomor HP
+    └── detectProvider.js     # auto-detect dari prefix nomor HP
 ```
+
+---
+
+## Routing
+
+| Path           | Akses  | Halaman              |
+| -------------- | ------ | -------------------- |
+| `/`            | Publik | Landing page         |
+| `/packages`    | Publik | Katalog paket        |
+| `/login`       | Publik | Login                |
+| `/transaction` | Login  | Form beli paket      |
+| `/success`     | Login  | Konfirmasi transaksi |
+| `/history`     | Login  | Riwayat transaksi    |
+| `/topup`       | Login  | Top up saldo         |
+| `/profile`     | Login  | Profil & statistik   |
 
 ---
 

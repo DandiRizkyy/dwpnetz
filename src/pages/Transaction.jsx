@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   Form,
@@ -20,6 +20,7 @@ import { PROVIDER_COLORS } from "@/constants/constant";
 const Transaction = () => {
   const { Title, Text } = Typography;
   const [form] = Form.useForm();
+  const [loading, setLoading] = useState(false);
   const user = useStore((state) => state.user);
   const setUser = useStore((state) => state.setUser);
   const phone = Form.useWatch("phone", form);
@@ -40,14 +41,17 @@ const Transaction = () => {
   const hasBalance = (user?.balance ?? 0) >= (pkg?.price ?? 0);
 
   const onFinish = async (values) => {
+    setLoading(true);
     try {
       if (user.balance < pkg.price) {
         message.error("Saldo tidak cukup");
+        setLoading(false);
         return;
       }
 
       if (detectedProvider !== pkg.provider) {
         message.error("Provider tidak sesuai dengan paket");
+        setLoading(false);
         return;
       }
 
@@ -73,9 +77,10 @@ const Transaction = () => {
       setUser(updatedUser);
 
       message.success("Transaksi berhasil✅");
-
+      setLoading(false);
       navigate("/success", { state: { trx, pkg, phone: values.phone } });
     } catch (err) {
+      setLoading(false);
       console.log(err);
       message.error("Terjadi kesalahan transaksi❌");
     }
@@ -279,6 +284,7 @@ const Transaction = () => {
 
           <Button
             disabled={!hasBalance}
+            loading={loading}
             type="primary"
             htmlType="submit"
             block

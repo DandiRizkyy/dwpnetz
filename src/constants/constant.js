@@ -62,7 +62,6 @@ const NAV_ITEMS_GUEST = [
 
 const PAGE_TITLES = {
   "/": "Beranda",
-  "/dashboard": "Dashboard",
   "/packages": "Paket Data",
   "/transaction": "Detail Pembelian",
   "/history": "Riwayat Transaksi",

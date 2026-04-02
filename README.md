@@ -89,7 +89,7 @@ User input nomor HP, provider langsung terdeteksi otomatis dari prefix nomor. Ka
 
 ### Halaman Sukses
 
-Setelah transaksi berhasil, user diarahkan ke halaman konfirmasi yang menampilkan detail lengkap: paket, nomor tujuan, total bayar, waktu, dan ID transaksi. Ada opsi kembali ke dashboard, lihat riwayat, atau beli lagi paket yang sama.
+Setelah transaksi berhasil, user diarahkan ke halaman konfirmasi yang menampilkan detail lengkap: paket, nomor tujuan, total bayar, waktu, dan ID transaksi. Ada opsi kembali ke beranda, lihat riwayat, atau beli lagi paket yang sama.
 
 ### Riwayat Transaksi
 

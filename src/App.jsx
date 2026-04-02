@@ -3,7 +3,6 @@ import MainLayout from "@/components/common/MainLayout";
 import Login from "@/pages/Login";
 import AuthRoute from "@/components/common/AuthRoute";
 import Landing from "@/pages/Landing";
-import Dashboard from "@/pages/Dashboard";
 import Packages from "@/pages/Packages";
 import Transaction from "@/pages/Transaction";
 import History from "@/pages/History";
@@ -24,7 +23,6 @@ function App() {
 
         <Route element={<AuthRoute />}>
           <Route element={<MainLayout />}>
-            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/transaction" element={<Transaction />} />
             <Route path="/history" element={<History />} />
             <Route path="/success" element={<Success />} />

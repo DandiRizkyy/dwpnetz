@@ -98,7 +98,7 @@ const Success = () => {
               fontWeight: 500,
             }}
           >
-            Kembali ke Dashboard
+            Kembali ke Beranda
           </Button>
           <Button block size="large" onClick={() => navigate("/history")}>
             Lihat Riwayat

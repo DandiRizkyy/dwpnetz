@@ -222,7 +222,7 @@ const Landing = () => {
                     handleBuy(pkg);
                   }}
                 >
-                  {user ? "Beli Sekarang" : "Masuk untuk Beli"}
+                  Beli Sekarang
                 </Button>
               </div>
             ))}

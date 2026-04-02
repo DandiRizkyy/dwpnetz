@@ -33,7 +33,7 @@ const Login = () => {
       }
       setUser(user);
       setLoading(false);
-      navigate("/");
+      navigate("/dashboard");
     } catch (err) {
       console.log(err);
       setLoading(false);

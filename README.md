@@ -20,7 +20,7 @@ User yang belum login bisa melihat landing page dan katalog paket. Untuk membeli
 
 - React + Vite
 - Ant Design — komponen utama (Form, Button, Card, Modal, Tag, Statistic, Drawer, dll)
-- `@ant-design/icons` — ikon konsisten di seluruh halaman
+- Ant Design Icons — ikon konsisten di seluruh halaman
 - Zustand — state management (user session + saldo)
 - React Router DOM
 - Axios

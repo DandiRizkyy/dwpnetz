@@ -7,6 +7,13 @@ const Success = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const data = location.state;
+
+  useEffect(() => {
+    if (!data) navigate("/", { replace: true });
+  }, []);
+
+  if (!data) return null;
+
   const { trx, pkg, phone } = data;
   const packageInfo = [
     { label: "Paket", val: `${pkg?.packageName} ${pkg?.provider}` },
@@ -33,11 +40,6 @@ const Success = () => {
       mono: true,
     },
   ];
-  useEffect(() => {
-    if (!data) navigate("/");
-  }, []);
-
-  if (!data) return null;
 
   return (
     <div style={{ maxWidth: 480, margin: "0 auto" }}>

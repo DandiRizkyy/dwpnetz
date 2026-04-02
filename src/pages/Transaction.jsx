@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   Form,
@@ -26,6 +27,13 @@ const Transaction = () => {
   const location = useLocation();
   const data = location.state;
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!data?.packageId) navigate("/packages", { replace: true });
+  }, []);
+
+  if (!data?.packageId) return null;
+
   const pkg = data;
   const providerMatch =
     phone?.length >= 4 && detectedProvider === pkg?.provider;
@@ -74,7 +82,7 @@ const Transaction = () => {
   };
 
   return (
-    <div style={{ maxWidth: 560 }}>
+    <div style={{ maxWidth: 560, margin: "0 auto" }}>
       <Button
         type="link"
         onClick={() => navigate(-1)}

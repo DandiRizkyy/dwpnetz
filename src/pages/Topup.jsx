@@ -10,6 +10,7 @@ import {
   Input,
   Typography,
   Result,
+  Modal,
   message,
 } from "antd";
 import { useStore } from "@/store/useStore";
@@ -30,17 +31,7 @@ const Topup = () => {
   const previewAmount =
     selected ?? (custom ? parseInt(custom.replace(/\D/g, ""), 10) || 0 : 0);
 
-  const handleSubmit = async () => {
-    const amount = previewAmount;
-    if (!amount || amount < 10000) {
-      message.warning("Minimum top up Rp 10.000");
-      return;
-    }
-    if (amount > 5000000) {
-      message.warning("Maksimum top up Rp 5.000.000 per transaksi");
-      return;
-    }
-
+  const handleConfirm = async (amount) => {
     setLoading(true);
     try {
       const newBalance = (user.balance ?? 0) + amount;
@@ -53,6 +44,36 @@ const Topup = () => {
       setLoading(false);
       message.error("Gagal melakukan top up. Coba lagi.");
     }
+  };
+
+  const handleSubmit = () => {
+    const amount = previewAmount;
+    if (!amount || amount < 10000) {
+      message.warning("Minimum top up Rp 10.000");
+      return;
+    }
+    if (amount > 5000000) {
+      message.warning("Maksimum top up Rp 5.000.000 per transaksi");
+      return;
+    }
+
+    Modal.confirm({
+      title: "Konfirmasi Top Up",
+      content: (
+        <div style={{ paddingTop: 8 }}>
+          <p style={{ margin: "4px 0" }}>
+            Nominal: <strong>Rp {amount.toLocaleString("id-ID")}</strong>
+          </p>
+          <p style={{ margin: "4px 0", color: "#6b7280" }}>
+            Saldo setelah top up: Rp{" "}
+            {((user?.balance ?? 0) + amount).toLocaleString("id-ID")}
+          </p>
+        </div>
+      ),
+      okText: "Ya, Top Up",
+      cancelText: "Batal",
+      onOk: () => handleConfirm(amount),
+    });
   };
 
   const handleCustomChange = (e) => {

@@ -10,12 +10,14 @@ import {
   Col,
   Empty,
 } from "antd";
+import { WifiOutlined } from "@ant-design/icons";
 import { useStore } from "@/store/useStore";
 import { getTransactions, getPackages } from "@/services/api";
 import { PROVIDER_COLORS } from "@/constants/constant";
 
 const Dashboard = () => {
   const [recentTrx, setRecentTrx] = useState([]);
+  const [allTrx, setAllTrx] = useState([]);
   const [popularPkgs, setPopularPkgs] = useState([]);
   const navigate = useNavigate();
   const user = useStore((s) => s.user);
@@ -29,22 +31,23 @@ const Dashboard = () => {
     return "Selamat malam";
   };
 
-  const totalSpend = recentTrx.reduce((s, t) => s + t.price, 0);
+  const totalSpend = allTrx.reduce((s, t) => s + t.price, 0);
 
   useEffect(() => {
-    const load = async () => {
+    const firtPageLoad = async () => {
       const [trxs, pkgs] = await Promise.all([
         getTransactions(),
         getPackages(),
       ]);
-      const mine = trxs
+      const userTrxs = trxs
         .filter((t) => t.userId === user.id)
-        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-        .slice(0, 4);
-      setRecentTrx(mine);
+        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      setAllTrx(userTrxs);
+      const recentTrxData = userTrxs.slice(0, 4);
+      setRecentTrx(recentTrxData);
       setPopularPkgs(pkgs.slice(0, 4));
     };
-    load();
+    firtPageLoad();
   }, [user.id]);
 
   return (
@@ -85,8 +88,8 @@ const Dashboard = () => {
         <Col xs={12} sm={8}>
           <Card size="small" styles={{ body: { padding: "16px 20px" } }}>
             <Statistic
-              title="Transaksi"
-              value={recentTrx.length}
+              title="Total Transaksi"
+              value={allTrx.length}
               valueStyle={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 700,
@@ -165,7 +168,7 @@ const Dashboard = () => {
                     className="trx-icon"
                     style={{ background: "var(--brand-blue-light)" }}
                   >
-                    📶
+                    <WifiOutlined style={{ fontSize: 18 }} />
                   </div>
                   <div className="trx-info">
                     <div className="trx-title">

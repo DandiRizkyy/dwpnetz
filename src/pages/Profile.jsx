@@ -151,7 +151,6 @@ const Profile = () => {
               valueStyle={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 700,
-                fontSize: 15,
               }}
             />
           </Card>

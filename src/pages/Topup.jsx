@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { TOPUP_VALUE } from "@/constants/constant";
 import { useNavigate } from "react-router-dom";
+import { CreditCardOutlined } from "@ant-design/icons";
 import {
   Button,
   Card,
@@ -139,7 +140,7 @@ const Topup = () => {
               Rp {(user?.balance ?? 0).toLocaleString("id-ID")}
             </Text>
           </div>
-          <span style={{ fontSize: 32 }}>💳</span>
+          <CreditCardOutlined style={{ fontSize: 32 }} />
         </Card>
 
         <Card

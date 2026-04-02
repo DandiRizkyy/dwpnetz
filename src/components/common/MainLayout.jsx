@@ -1,8 +1,17 @@
 import { useState } from "react";
 import { useNavigate, useLocation, Outlet } from "react-router-dom";
 import { Modal } from "antd";
+import {
+  MenuOutlined,
+  PoweroffOutlined,
+  CreditCardOutlined,
+  AppstoreOutlined,
+  ShoppingOutlined,
+  FileTextOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import { useStore } from "@/store/useStore";
-import { PAGE_TITLES, NAV_ITEMS } from "@/constants/constant";
+import { PAGE_TITLES } from "@/constants/constant";
 
 const MainLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -11,6 +20,14 @@ const MainLayout = () => {
   const location = useLocation();
   const user = useStore((s) => s.user);
   const logout = useStore((s) => s.logout);
+
+  const NAV_ITEMS = [
+    { path: "/", icon: <AppstoreOutlined />, label: "Dashboard" },
+    { path: "/packages", icon: <ShoppingOutlined />, label: "Pilih Paket" },
+    { path: "/history", icon: <FileTextOutlined />, label: "Riwayat" },
+    { path: "/topup", icon: <CreditCardOutlined />, label: "Top Up" },
+    { path: "/profile", icon: <UserOutlined />, label: "Profil" },
+  ];
 
   const initials = user?.name
     ? user.name
@@ -76,7 +93,7 @@ const MainLayout = () => {
             onClick={() => setLogoutModal(true)}
             style={{ color: "rgba(255,100,100,0.75)", marginTop: 4 }}
           >
-            <span style={{ fontSize: 16 }}>⏻</span>
+            <PoweroffOutlined style={{ fontSize: 16 }} />
             Keluar
           </button>
         </div>
@@ -88,11 +105,12 @@ const MainLayout = () => {
             className="hamburger-btn"
             onClick={() => setSidebarOpen(true)}
           >
-            ☰
+            <MenuOutlined />
           </button>
           <div className="topbar-title">{currentTitle}</div>
           <div className="topbar-balance">
-            💳 Rp {(user?.balance ?? 0).toLocaleString("id-ID")}
+            <CreditCardOutlined /> Rp{" "}
+            {(user?.balance ?? 0).toLocaleString("id-ID")}
           </div>
         </header>
 

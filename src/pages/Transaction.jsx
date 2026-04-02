@@ -10,6 +10,7 @@ import {
   Divider,
   message,
 } from "antd";
+import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import { useStore } from "@/store/useStore";
 import { updateUser, createTransaction } from "@/services/api";
 import { detectProvider } from "@/utils/detectProvider";
@@ -208,8 +209,8 @@ const Transaction = () => {
           {phone?.length >= 4 && (
             <div style={{ marginBottom: 16 }}>
               <Tag color={providerMatch ? "success" : "error"}>
-                {providerMatch ? "✓" : "✕"} Terdeteksi:{" "}
-                {detectedProvider || "Tidak diketahui"}
+                {providerMatch ? <CheckOutlined /> : <CloseOutlined />}{" "}
+                Terdeteksi: {detectedProvider || "Tidak diketahui"}
               </Tag>
             </div>
           )}

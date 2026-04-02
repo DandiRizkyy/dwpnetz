@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Card, Button, Tag, Typography, Spin, Empty } from "antd";
+import { WifiOutlined } from "@ant-design/icons";
 import { useStore } from "@/store/useStore";
 import { getTransactions } from "@/services/api";
 import { useNavigate } from "react-router-dom";
@@ -102,7 +103,7 @@ const History = () => {
                 className="trx-icon"
                 style={{ background: "var(--brand-blue-light)" }}
               >
-                📶
+                <WifiOutlined style={{ fontSize: 18 }} />
               </div>
               <div className="trx-info">
                 <div className="trx-title">

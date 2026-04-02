@@ -66,7 +66,7 @@ const Login = () => {
             textAlign: "center",
           }}
         >
-          Masuk untuk mulai beli paket data
+          Login untuk mulai beli paket data
         </Text>
 
         <Form
@@ -109,7 +109,7 @@ const Login = () => {
                 fontWeight: 500,
               }}
             >
-              Masuk
+              Login
             </Button>
           </Form.Item>
         </Form>

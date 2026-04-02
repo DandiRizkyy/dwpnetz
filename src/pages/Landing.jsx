@@ -139,7 +139,7 @@ const Landing = () => {
                   color: "white",
                 }}
               >
-                Masuk Akun
+                Login
               </Button>
             )}
           </div>
@@ -250,7 +250,7 @@ const Landing = () => {
               marginBottom: 24,
             }}
           >
-            Daftar atau masuk sekarang untuk mulai transaksi
+            Daftar atau Login untuk mulai transaksi
           </Text>
           <Button
             type="primary"
@@ -265,7 +265,7 @@ const Landing = () => {
               paddingInline: 32,
             }}
           >
-            Masuk Sekarang
+            Login Sekarang
           </Button>
         </div>
       )}

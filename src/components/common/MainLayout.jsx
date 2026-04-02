@@ -103,7 +103,7 @@ const MainLayout = () => {
                 className="navbar-login-btn"
                 onClick={() => navigate("/login")}
               >
-                <LoginOutlined /> Masuk
+                <LoginOutlined /> Login
               </button>
             )}
 
@@ -189,7 +189,7 @@ const MainLayout = () => {
                   setDrawerOpen(false);
                 }}
               >
-                <LoginOutlined /> Masuk
+                <LoginOutlined /> Login
               </button>
             </>
           )}

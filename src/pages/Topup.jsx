@@ -104,7 +104,7 @@ const Topup = () => {
 
   const renderSecondStep = () => {
     return (
-      <div style={{ maxWidth: 520 }}>
+      <div style={{ maxWidth: 520, margin: "0 auto" }}>
         <Title
           level={3}
           style={{ marginBottom: 4, fontFamily: "var(--font-display)" }}

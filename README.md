@@ -37,13 +37,19 @@ Login → Dashboard → Pilih Paket → Input Nomor → Checkout → Success →
 
 ## Cara Jalankan
 
-### 1. Install dependencies
+### 1. Clone Repository
+
+```bash
+git clone https://github.com/DandiRizkyy/dwpnetz.git
+```
+
+### 2. Masuk ke folder dwpnetz lalu Install dependencies
 
 ```bash
 npm install
 ```
 
-### 2. Jalankan sekaligus (json-server + frontend)
+### 3. Jalankan sekaligus (json-server + frontend)
 
 ```bash
 npm run start
